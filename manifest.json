@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Slack Huddle Voice Detector",
+  "version": "1.0.0",
+  "description": "ハドルで誰かが話し始めた時に通知",
+
+  "icons": {
+    "48": "icons/icon48.png"
+  },
+
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "notifications",
+    "*://*.slack.com/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.slack.com/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Slack Huddle Settings"
+  },
+
+  "host_permissions": ["https://*.slack.com/*"]
+}
