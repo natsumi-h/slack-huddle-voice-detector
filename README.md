@@ -20,8 +20,6 @@ With this extension, you can enjoy background music or other audio while staying
 
 ## How to Install in Chrome
 
-### Option 1: Developer Mode Installation (Recommended for now)
-
 1. **Download the Extension**
    - Download or clone this repository to your local machine
    - Extract the files if downloaded as a ZIP
@@ -38,10 +36,6 @@ With this extension, you can enjoy background music or other audio while staying
 4. **Verify Installation**
    - Look for the Slack Huddle Voice Detector icon in your Chrome toolbar
    - Visit any Slack workspace and join a Huddle to test the functionality
-
-### Option 2: Chrome Web Store (Coming Soon)
-
-The extension will be available on the Chrome Web Store in the future for easier installation.
 
 ## How to Use
 
