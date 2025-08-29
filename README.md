@@ -2,6 +2,9 @@
 
 A Chrome extension that detects when someone starts speaking in Slack Huddles and sends notifications.
 
+<img width="353" height="90" alt="Screenshot 2025-08-27 at 6 59 43 PM" src="https://github.com/user-attachments/assets/2ea346d3-8d8f-4ad0-b365-d58087d11262" />
+
+
 ## Motivation
 
 Teams often stay connected in Slack Huddles while working, but usually keep themselves muted. When someone has a question and wants to speak up, team members might miss it without proper notifications. This extension helps by detecting voice activity in Huddles and alerting you when someone starts speaking.
