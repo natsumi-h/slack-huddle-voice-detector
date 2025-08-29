@@ -2,7 +2,9 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "voice_activity_detected") {
     handleVoiceNotification(message.data);
+    sendResponse({ status: "received" });
   }
+  return true;
 });
 
 async function handleVoiceNotification(data) {
@@ -30,12 +32,6 @@ async function handleVoiceNotification(data) {
       timestamp: new Date(data.timestamp).toLocaleTimeString(),
       tabActive: data.tabActive,
     });
-
-    // 通知が正常に作成された場合の追加処理
-    // if (notificationId) {
-    //   // 統計情報を更新（オプション）
-    //   updateNotificationStats();
-    // }
   } catch (error) {
     console.error("macOS通知センターへの通知送信に失敗:", error);
 
@@ -61,25 +57,6 @@ function playNotificationSound() {
   // 追加でカスタム音声が必要な場合のみこの関数を使用
   console.log("macOS通知音を再生します");
 }
-
-// 通知統計情報の管理（オプション）
-// async function updateNotificationStats() {
-//   try {
-//     const stats = (await chrome.storage.local.get(["notificationStats"])) || {
-//       notificationStats: {},
-//     };
-//     const today = new Date().toDateString();
-
-//     if (!stats.notificationStats[today]) {
-//       stats.notificationStats[today] = 0;
-//     }
-//     stats.notificationStats[today]++;
-
-//     await chrome.storage.local.set(stats);
-//   } catch (error) {
-//     console.log("統計情報の更新をスキップ:", error);
-//   }
-// }
 
 // 拡張機能がインストールされた時の初期設定
 chrome.runtime.onInstalled.addListener(() => {
@@ -125,14 +102,6 @@ chrome.notifications.onClicked.addListener(async (notificationId) => {
     console.error("通知クリック処理でエラー:", error);
   }
 });
-
-// 通知が閉じられた時の処理（オプション）
-// chrome.notifications.onClosed.addListener((notificationId, byUser) => {
-//   console.log("macOS通知が閉じられました:", {
-//     id: notificationId,
-//     byUser: byUser, // ユーザーが手動で閉じたかどうか
-//   });
-// });
 
 // 通知ボタンがクリックされた時の処理（将来的な拡張用）
 chrome.notifications.onButtonClicked.addListener(
